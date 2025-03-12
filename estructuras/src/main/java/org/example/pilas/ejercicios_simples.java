@@ -1,4 +1,4 @@
-package org.example;
+package org.example.pilas;
 
 import java.util.Scanner;
 import java.util.Stack;
@@ -49,20 +49,30 @@ public class ejercicios_simples {
         System.out.print("Expresión: ");
         String expresion = teclado.next();
 
-        esBalanceado(expresion);
+        if (esBalanceado(expresion)){
+            System.out.println("BIEN");
+        }else {
+            System.out.println("MAL");
+        }
 
     }
 
-    public static void esBalanceado(String expre){
+    public static boolean esBalanceado(String expre){
 
         Stack<Character> cadena = new Stack<>();
 
         for (int i = 0; i < expre.length(); i++) {
-            if (")".equals(expre.charAt(i)) && cadena.contains('(')){
+            if (expre.charAt(i)==')' && cadena.contains('(')){
                 cadena.pop();
-            } else if ("(".equals(expre.charAt(i))) {
-                cadena.push('(');
+            } else if (expre.charAt(i)=='(' || expre.charAt(i)==')' && !cadena.contains('(')) {
+                cadena.push(expre.charAt(i));
             }
+        }
+
+        if (cadena.isEmpty()){
+            return true;
+        }else{
+            return false;
         }
     }
 }

@@ -1,7 +1,6 @@
 package org.example;
 
-import java.util.Collection;
-import java.util.Stack;
+import org.example.pilas.ejercicios_simples;
 
 //TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
 // click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
