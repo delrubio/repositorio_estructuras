@@ -21,5 +21,9 @@ public class Ejercicio1 {
             //coge la clave, y si luego buscando la clave no la encuentra la pone a 0, si no le suma +1
         }
 
+        for (Map.Entry<String, Integer> palabra : mapaPalabras.entrySet()){
+            System.out.println(palabra.getKey() + " " + palabra.getValue());
+        }
+
     }
 }
