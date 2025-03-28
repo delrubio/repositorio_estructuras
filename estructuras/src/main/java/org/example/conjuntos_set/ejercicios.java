@@ -10,7 +10,7 @@ public class ejercicios {
     static Scanner teclado = new Scanner(System.in);
 
     public static void main(String[] args) {
-        ejer4();
+        ejer1();
     }
 
     public static void ejer1(){
