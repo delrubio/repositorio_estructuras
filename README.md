@@ -21,6 +21,10 @@ El programa se divide en 2 partes:
   Utilizaremos Programación Orientada a Objetos (P.O.O.) y la siquiente estructura
 
   ### Diagrama UML
-  ![diagrama.png](diagrama.png)
+   ![img/biblio.png](img/biblio.png)
+
+  ### Codigo UML
+  ````Plant UML
+  ````
 
 ## Pruebas
