@@ -76,3 +76,4 @@ public class Arbitro {
 
 ## Entrega
 - [ ] **Codigo Fuente**: [GitHub](https://rallyteruel.com)
+- [x] **Codigo Fuente**: [GitHub](https://rallyteruel.com)
