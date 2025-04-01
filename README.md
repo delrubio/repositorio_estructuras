@@ -17,4 +17,10 @@ El programa se divide en 2 partes:
 - App Mantenimiento.[en proceso]
 - App Zona Clientes para autenticarse y realizar pedidos
 
+  ## Estructura de Clase
+  Utilizaremos Programación Orientada a Objetos (P.O.O.) y la siquiente estructura
+
+  ### Diagrama UML
+  ![diagrama.png](diagrama.png)
+
 ## Pruebas
