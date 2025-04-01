@@ -23,8 +23,56 @@ El programa se divide en 2 partes:
   ### Diagrama UML
    ![img/biblio.png](img/biblio.png)
 
-  ### Codigo UML
-  ````Plant UML
-  ````
+  ### Codigo Java
+
+
+```` Java
+
+  package org.example.inmutabilidad;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.List;
+
+public class Arbitro {
+
+    List<String> listaArbi = new ArrayList<>(Arrays.asList("Gil Manzano", "Negreira", "Clos Gómez"));
+
+
+    //todo le que utilize este metodo no lo va a poder modificar la lista.
+    public List<String> getListaArbi(){
+        return Collections.unmodifiableList(listaArbi);
+    }
+
+    @Override
+    public String toString() {
+        return "Arbitro{" +
+                "listaArbi=" + listaArbi +
+                '}';
+    }
+
+}
+
+  
+````
 
 ## Pruebas
+
+> [!NOTE]
+> Useful information that users should know, even when skimming content.
+
+> [!TIP]
+> Helpful advice for doing things better or more easily.
+
+> [!IMPORTANT]
+> Key information users need to know to achieve their goal.
+
+> [!WARNING]
+> Urgent info that needs immediate user attention to avoid problems.
+
+> [!CAUTION]
+> Advises about risks or negative outcomes of certain actions.
+
+## Entrega
+- [ ] **Codigo Fuente**: [GitHub](https://rallyteruel.com)
