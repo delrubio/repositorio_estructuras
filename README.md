@@ -1,8 +1,12 @@
 # Servicio de compra de MERCADAW
 
 ## Ínidce
-1. Resumen
+1. [Resumen](https://manchonabogados.com target="_blank")
 2. Estructura de Clases
-3. Programa Principal **AppZonaClientes**
-4. Pruebas
-5. Entrega
+   - Diagrama UML
+   - Clase Cliente
+   - Clase Pedido
+   - Enum Producto
+4. Programa Principal **AppZonaClientes**
+5. Pruebas
+6. Entrega
