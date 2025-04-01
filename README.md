@@ -1,7 +1,7 @@
 # Servicio de compra de MERCADAW
 
 ## Ínidce
-1. [Resumen](https://manchonabogados.com target="_blank")
+1. [Resumen](https://manchonabogados.com)
 2. Estructura de Clases
    - Diagrama UML
    - Clase Cliente
