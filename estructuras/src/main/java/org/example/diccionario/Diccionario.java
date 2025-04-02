@@ -21,6 +21,12 @@ public class Diccionario {
         diccionarioPalabras.put("Ballena", "Wale");
         diccionarioPalabras.put("Tiburon", "Shark");
 
+        menu();
+
+    }
+
+    public static void menu(){
+
         System.out.println("¿Que quieres hacer?");
         System.out.println("-------------------");
         System.out.println("1. Añadir Palabras");
@@ -40,13 +46,12 @@ public class Diccionario {
             case 3:
                 palabraAleatoria();
                 break;
-            case 4:
+           case 4:
                 primeraLetraTraduccion();
                 break;
-            default:
+           default:
                 System.exit(1);
         }
-
     }
 
     public static void nuevoPar(){
@@ -56,6 +61,7 @@ public class Diccionario {
         diccionarioPalabras.put(par[0], par[1]);
 
         System.out.println("Añadido con EXITO!");
+        menu();
 
     }
 
