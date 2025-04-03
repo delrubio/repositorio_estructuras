@@ -14,24 +14,36 @@ public class Cliente {
     @Getter
     private String pass;
     private String direccion;
+    public double importeTotal;
 
     private Pedido pedido;
 
-    public Cliente(String usuario, String pass){
-        this.usuario=usuario;
-        this.pass=pass;
-        direccion="Calle falsa, 123";
+    public Cliente(String usuario, String pass) {
+        this.usuario = usuario;
+        this.pass = pass;
+        direccion = "Calle falsa, 123";
     }
 
-    public void cerarPedido(){
+    public void cerarPedido() {
     }
 
-    public void insertarProducto(String producto){
+    public void insertarProducto(Producto producto) {
 
     }
 
-    public double importePedido(){
-        return 0;
+    public double importePedido(String prod) {
+
+        Producto producto = Producto.MANZANAS;
+
+        for (int i = 0; i < 10; i++) {
+            producto = producto.siguiente(producto);
+
+            if (prod.matches(producto.name())) {
+                importeTotal += producto.getPrecio();
+            }
+        }
+
+        return importeTotal;
     }
 
 }

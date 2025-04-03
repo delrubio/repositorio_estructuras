@@ -8,6 +8,7 @@ public class AppZonaClientes {
 
     static String usu;
     static String pass;
+    static String opc;
 
     static List<Cliente> clienteList = new LinkedList<>();
     static Scanner teclado = new Scanner(System.in);
@@ -67,39 +68,61 @@ public class AppZonaClientes {
         }
 
         System.out.print("Elige un producto: ");
-        String opc = teclado.next().toUpperCase();
+        opc = teclado.next().toUpperCase();
 
-        switch (opc){
+        switch (opc) {
             case "MANZANAS":
-                clienteStatic.insertarProducto("MANZANAS");
+                clienteStatic.insertarProducto(Producto.MANZANAS);
+                System.out.println("Manzanas añadidas con con un importe de " + Producto.MANZANAS.getPrecio() + "€.");
+                break;
             case "PAN":
-                clienteStatic.insertarProducto("PAN");
+                clienteStatic.insertarProducto(Producto.PAN);
+                System.out.println("Pan añadido con con un importe de " + Producto.PAN.getPrecio() + "€.");
+                break;
             case "ARROZ":
-                clienteStatic.insertarProducto("ARROZ");
+                clienteStatic.insertarProducto(Producto.ARROZ);
+                System.out.println("Arroz añadido con con un importe de " + Producto.ARROZ.getPrecio() + "€.");
+                break;
             case "POLLO":
-                clienteStatic.insertarProducto("POLLO");
+                clienteStatic.insertarProducto(Producto.POLLO);
+                System.out.println("Pollo añadido con con un importe de " + Producto.POLLO.getPrecio() + "€.");
+                break;
             case "LECHE":
-                clienteStatic.insertarProducto("LECHE");
+                clienteStatic.insertarProducto(Producto.LECHE);
+                System.out.println("Leche añadida con con un importe de " + Producto.LECHE.getPrecio() + "€.");
+                break;
             case "ACEITE":
-                clienteStatic.insertarProducto("ACEITE");
+                clienteStatic.insertarProducto(Producto.ACEITE);
+                System.out.println("Aceite añadido con con un importe de " + Producto.ACEITE.getPrecio() + "€.");
+                break;
             case "HUEVOS":
-                clienteStatic.insertarProducto("HUEVOS");
+                clienteStatic.insertarProducto(Producto.HUEVOS);
+                System.out.println("Huevos añadidos con con un importe de " + Producto.HUEVOS.getPrecio() + "€");
+                break;
             case "TOMATES":
-                clienteStatic.insertarProducto("TOMATES");
+                clienteStatic.insertarProducto(Producto.TOMATES);
+                System.out.println("Tomates añadidos con con un importe de " + Producto.TOMATES.getPrecio() + "€");
+                break;
             case "PASTA":
-                clienteStatic.insertarProducto("PASTA");
+                clienteStatic.insertarProducto(Producto.PASTA);
+                System.out.println("Pasta añadida con con un importe de " + Producto.PASTA.getPrecio() + "€");
+                break;
             default:
                 System.out.println("¡VAYA! El producto indicado no existe. Prueba de nuevo...");
                 imprimirProducto();
+        }
 
-            System.out.println("¿Quieres continuar con la compra? [s/n]");
-            opc=teclado.next().toLowerCase();
+        System.out.println("Importe Total");
+        System.out.println("-------------");
+        System.out.println(clienteStatic.importePedido(opc) + "€");
 
-            if (opc.matches("si")){
-                    imprimirProducto();
-            }else {
-                imprimirDespedida();
-            }
+        System.out.println("¿Quieres continuar con la compra? [s/n]");
+        opc=teclado.next().toLowerCase();
+
+        if (opc.matches("s")){
+            imprimirProducto();
+        }else {
+            imprimirDespedida();
         }
     }
 
