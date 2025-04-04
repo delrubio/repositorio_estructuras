@@ -16,9 +16,11 @@ public class AppZonaClientes {
 
     public static void main(String[] args) {
 
+        //creamos un nuevo cliente llamando a Mercadaw
         Mercadaw mercadaw = new Mercadaw();
         mercadaw.generarClientes();
 
+        //cogemos la lista de clientes y autenticamos el LoggIn
         clienteList=mercadaw.getClienteList();
         autenticacion(clienteList);
 
@@ -26,24 +28,23 @@ public class AppZonaClientes {
 
     static public void autenticacion(List<Cliente> cliente){
         for (Cliente client : cliente){
-
             for (int i = 0; i < 3; i++) {
 
-                System.out.print("Usuario (" + client.getUsuario() + "): " );
+                System.out.print("Usuario (" + client.getUsuario() + "): " );//muestro y cojo el usuario.
                 usu = teclado.next();
-                System.out.print("Contraseña (" + client.getPass() + "): " );
+                System.out.print("Contraseña (" + client.getPass() + "): " );//muestro y cojo la pass
                 pass = teclado.next();
 
-                if(usu.matches(client.getUsuario()) && pass.matches(client.getPass())){
-                    clienteStatic=client;
-                    iniciarCompra();
+                if(usu.matches(client.getUsuario()) && pass.matches(client.getPass())){//si el usuario y la pass coinciden empezamos
+                    clienteStatic=client;//nos quedamos con el cliente que ha iniciado sesión
+                    iniciarCompra();//iniciamos
                     break;
                 }else{
                     if (i == 2){
-                        System.out.println("ERROR DE AUTENTICACIÓN.");
+                        System.out.println("ERROR DE AUTENTICACIÓN.");//número de intentos
                         break;
                     }else {
-                        System.out.println("Vaya... Algo no coincide o no existe. Vuelve a intentarlo!");
+                        System.out.println("Vaya... Algo no coincide o no existe. Vuelve a intentarlo!");//volver a intentar
                     }
                 }
 
@@ -54,8 +55,8 @@ public class AppZonaClientes {
 
     static public void iniciarCompra(){
         System.out.println("¡BIENVENIDO! Añade productos a tu cesta: ");
-        clienteStatic.cerarPedido();
-        imprimirProducto();
+        clienteStatic.crearPedido();//creamos un pedido para el cliente
+        imprimirProducto();//imprimimos los productos
 
     }
 
@@ -64,12 +65,14 @@ public class AppZonaClientes {
 
         for (int i = 0; i < 10; i++) {
             System.out.println("PRODUCTO - " + producto + ", " + producto.getPrecio() + "€");
-            producto=producto.siguiente(producto);
+            producto=producto.siguiente(producto);//he utilizado la técnica del semaforo
         }
 
         System.out.print("Elige un producto: ");
         opc = teclado.next().toUpperCase();
 
+        //con el swich, lo que hacemos es mostrar que se ha añadido a la cesta el producto y al cliente le añadimos
+        // el producto en su clase llamando a insertarProducto()
         switch (opc) {
             case "MANZANAS":
                 clienteStatic.insertarProducto(Producto.MANZANAS);
@@ -114,20 +117,24 @@ public class AppZonaClientes {
 
         System.out.println("Importe Total");
         System.out.println("-------------");
-        System.out.println(clienteStatic.importePedido(opc) + "€");
+        System.out.println(clienteStatic.importePedido(opc) + "€"); //Mostramos el importe actual que lleva
 
-        System.out.println("¿Quieres continuar con la compra? [s/n]");
+        System.out.println("¿Quieres continuar con la compra? [s/n]"); //Pregunto si quiere seguir o ir finalizando
         opc=teclado.next().toLowerCase();
 
-        if (opc.matches("s")){
+        if (opc.matches("s")){ //Si quiere seguir vuelvo a imprimir y ha dejarle añadir cosas a la cesta
             imprimirProducto();
+        }else if (opc.matches("n")) {
+            clienteStatic.fin(); //Si no, procedemos a ir cerrando la compra
         }else {
-            imprimirDespedida();
+            System.out.println("¡ERROR! Opción no válida");
         }
     }
 
     static public void imprimirDespedida(){
-
+        System.out.println("¡GRACIAS POR SU PEDIDO!");
+        System.out.println("Se lo enviarémos a " + clienteStatic.getDireccion()); //Mensage de despedida de donde le
+                                                                                // llegará la compra
     }
 
 }

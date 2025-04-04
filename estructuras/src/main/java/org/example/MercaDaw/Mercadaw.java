@@ -8,6 +8,7 @@ public class Mercadaw {
 
     List<Cliente> clienteList;
 
+    //creo un cliente de pruebas para poder ejecutar el programa
     public void generarClientes(){
 
         clienteList=new LinkedList<>();
@@ -16,8 +17,9 @@ public class Mercadaw {
 
     }
 
-     public List<Cliente> getClienteList(){
+    //la lista de cliente cuando la cogan otras clases, no puede ser modificable
+    public List<Cliente> getClienteList(){
         return Collections.unmodifiableList(clienteList);
-     }
+    }
 
 }

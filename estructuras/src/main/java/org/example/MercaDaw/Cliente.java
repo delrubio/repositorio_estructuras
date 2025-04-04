@@ -1,49 +1,79 @@
 package org.example.MercaDaw;
 
-import lombok.Getter;
-
 import java.util.HashSet;
+import java.util.Objects;
 import java.util.Set;
 
 public class Cliente {
 
     static Set<Cliente> clienteList = new HashSet<>();
 
-    @Getter
+    //atributos de cliente
     private String usuario;
-    @Getter
     private String pass;
     private String direccion;
-    public double importeTotal;
-
     private Pedido pedido;
+    private boolean promos;
 
     public Cliente(String usuario, String pass) {
         this.usuario = usuario;
         this.pass = pass;
-        direccion = "Calle falsa, 123";
+        promos=false;
+        this.direccion = "Calle falsa, 123";
+        clienteList.add(this);
     }
 
-    public void cerarPedido() {
+    public String getUsuario() {
+        return usuario;
     }
 
+    public String getPass() {
+        return pass;
+    }
+
+    public String getDireccion() {
+        return direccion;
+    }
+
+    public boolean isPromos(){
+        return promos;
+    }
+
+    public void setPromos() {
+        promos = true;
+    }
+
+    //creo un nuevo pedido, conmigo mismo en la clase Pedido
+    public void crearPedido() {
+        pedido = new Pedido(this);
+    }
+
+    //en la lista de productos de la clase Pedido, le pongo el producto que me de el swich de AppZonaClientes.
     public void insertarProducto(Producto producto) {
-
+        pedido.listaPedido(producto);
     }
 
+    //cogemos el importe actual del pedido que lleva el cliente.
     public double importePedido(String prod) {
-
-        Producto producto = Producto.MANZANAS;
-
-        for (int i = 0; i < 10; i++) {
-            producto = producto.siguiente(producto);
-
-            if (prod.matches(producto.name())) {
-                importeTotal += producto.getPrecio();
-            }
-        }
-
-        return importeTotal;
+        return pedido.importeTotal;
     }
 
+    //conectamos que el cliente al no querer seguir añadiendo productos, lo enviamos a Pedido para ir cerrando.
+    public void fin(){
+        pedido.resumenCompra();
+    }
+
+    //tenemos que mirar que no hayan 2 cliente con el mismo usuario.
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Cliente cliente = (Cliente) o;
+        return Objects.equals(usuario, cliente.usuario);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hashCode(usuario);
+    }
 }
