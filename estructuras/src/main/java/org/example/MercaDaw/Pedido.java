@@ -65,8 +65,7 @@ public class Pedido {
                 for (Map.Entry<Producto, Integer> mapa : listaMapa){
                     System.out.println(mapa.getValue() + " " + mapa.getKey() + " " + mapa.getKey().getPrecio() + "€");
                 }
-
-                break;
+                resumenCompra();
             case "3"://bye bye butterfly
                 AppZonaClientes.imprimirDespedida();
                 break;
