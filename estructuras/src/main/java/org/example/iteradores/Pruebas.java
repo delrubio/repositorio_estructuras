@@ -40,11 +40,16 @@ public class Pruebas {
             }
         }
 
+        //EL ITERADOR ES UTIL PARA CUANDO QUEREMOS MANIPULAR UN FOREACH Y QUE NO SE VUELVA LOCO.
+
+
+
+
         System.out.println(listaEmpresas);
 
         HashMap<String, Integer> notasFinales = new HashMap<>();
         notasFinales.put("Isamel", 3);
-        notasFinales.put("Antonio", 1);
+        notasFinales.put("Antonio", 1);   
         notasFinales.put("Cesa", 7);
         notasFinales.put("Mauro", 7);
         notasFinales.put("David", 5);
