@@ -14,4 +14,13 @@ public class Profesor {
         this.asignatura=asignatura;
         this.edad=edad;
     }
+
+    @Override
+    public String toString() {
+        return "Profesor{" +
+                "nombre='" + nombre + '\'' +
+                ", asignatura='" + asignatura + '\'' +
+                ", edad=" + edad +
+                '}';
+    }
 }
