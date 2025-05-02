@@ -1,4 +1,4 @@
-package org.example;
+package org.example.practica2_javafx;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -21,7 +21,4 @@ public class Estudiante {
     private int nia;
     private String nombre;
     private LocalDate date;
-
-
-
 }

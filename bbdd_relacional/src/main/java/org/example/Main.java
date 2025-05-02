@@ -1,15 +1,14 @@
 package org.example;
 
-import javax.swing.plaf.nimbus.State;
 import java.sql.*;
 import java.time.LocalDate;
+import java.util.ArrayList;
 
 public class Main {
     public static void main(String[] args) {
 
         Connection bd = conectar();
-        consultar(bd);
-        modificar(bd);
+        consultar_a_lista(bd);
         desconectar(bd);
 
     }
@@ -110,6 +109,35 @@ public class Main {
             stmt = conexion.createStatement();
             stmt.executeUpdate(query);
             System.out.println("--- FILA BORRADA ---");
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+            throw new RuntimeException(e);
+        }
+
+    }
+
+    public static void consultar_a_lista(Connection conexion){
+
+        String query = "SELECT * FROM estudiante";
+
+        Statement stmt;
+        ResultSet resultado;
+        ArrayList<Estudiante> estudiantesList = new ArrayList<>();
+
+        try {
+            stmt = conexion.createStatement();
+            resultado = stmt.executeQuery(query);
+
+            while (resultado.next()){
+                int nia = resultado.getInt("nia");
+                String nombre = resultado.getString("nombre");
+                LocalDate date = resultado.getDate("fecha_nacimiento").toLocalDate();
+
+                estudiantesList.add(new Estudiante(nia, nombre, date));
+            }
+
+            System.out.println(estudiantesList);
+
         } catch (SQLException e) {
             System.out.println(e.getMessage());
             throw new RuntimeException(e);
