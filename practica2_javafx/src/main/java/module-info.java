@@ -11,6 +11,7 @@ module org.example.practica2_javafx {
     requires eu.hansolo.tilesfx;
     requires com.almasb.fxgl.all;
     requires static lombok;
+    requires java.sql;
 
     opens org.example.practica2_javafx to javafx.fxml;
     exports org.example.practica2_javafx;

@@ -22,6 +22,4 @@ public class Estudiante {
     private String nombre;
     private LocalDate date;
 
-
-
 }
