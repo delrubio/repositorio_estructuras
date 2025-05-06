@@ -6,6 +6,7 @@
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 
 <VBox alignment="CENTER" prefHeight="428.0" prefWidth="553.0" spacing="20.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.practica2_javafx.HelloController">
@@ -19,8 +20,19 @@
          <TableColumn fx:id="fechaTableview" prefWidth="199.0" text="FECHA NACIMIENTO" />
      </columns>
    </TableView>
+   <HBox alignment="TOP_CENTER" prefHeight="100.0" prefWidth="200.0">
+      <children>
+         <Button fx:id="editarButton" mnemonicParsing="false" onAction="#onEditarButton" text="Editar Alumno" />
+         <Button fx:id="borrarButton" mnemonicParsing="false" onAction="#onBorrarButton" text="Borrar Alumno" />
+      </children>
+   </HBox>
    <TextField fx:id="niaTextField" promptText="nia" />
    <TextField fx:id="nombreTextField" promptText="nombre" />
    <DatePicker fx:id="datePicker" />
-   <Button fx:id="addButton" mnemonicParsing="false" onAction="#onAnyadirEstudiante" text="Añadir Alumno" />
+   <HBox alignment="TOP_CENTER" prefHeight="100.0" prefWidth="200.0">
+      <children>
+         <Button fx:id="addButton" mnemonicParsing="false" onAction="#onAnyadirEstudiante" text="Añadir Alumno" />
+         <Button fx:id="guardarButton" disable="true" mnemonicParsing="false" onAction="#onGuardarButton" text="Guardar Cambios" />
+      </children>
+   </HBox>
 </VBox>

@@ -4,6 +4,7 @@ import javafx.beans.Observable;
 import javafx.beans.property.ReadOnlyObjectWrapper;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 
@@ -37,6 +38,15 @@ public class HelloController {
     @FXML
     private Button addButton;
 
+    @FXML
+    private Button editarButton;
+
+    @FXML
+    private Button borrarDisable;
+
+    @FXML
+    private Button guardarButton;
+
     ObservableList<Estudiante> listaEstudiantes = FXCollections.observableArrayList();
 
     Connection bd;
@@ -50,7 +60,6 @@ public class HelloController {
 
         tablaEstudiante.setItems(Mantenimiento.consultar(bd));
     }
-
 
     @FXML
     protected void onAnyadirEstudiante() {
@@ -68,5 +77,19 @@ public class HelloController {
 
         tablaEstudiante.setItems(Mantenimiento.consultar(bd));
 
+    }
+
+    public void onEditarButton(ActionEvent actionEvent) {
+
+        addButton.setDisable(true);
+        guardarButton.setDisable(false);
+
+        Estudiante estudiante = tablaEstudiante.getSelectionModel().getSelectedItem();
+    }
+
+    public void onBorrarButton(ActionEvent actionEvent) {
+    }
+
+    public void onGuardarButton(ActionEvent actionEvent) {
     }
 }
