@@ -66,5 +66,26 @@ public class Mantenimiento {
 
     }
 
+    public static void insertar(Connection conexion, Estudiante estudiante){
+
+        StringBuilder query = new StringBuilder();
+
+        query.append("INSERT INTO estudiante (nia, nombre, fecha_nacimiento) VALUES ('");
+        query.append(estudiante.getNia() + "'");
+        query.append(", '" + estudiante.getNombre() + "'");
+        query.append(", '" + estudiante.getDate() + "')");
+
+        Statement stmt;
+
+        try {
+            stmt = conexion.createStatement();
+            stmt.executeUpdate(query.toString());
+            System.out.println("--- FILA INSERTADA ---");
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+            throw new RuntimeException(e);
+        }
+    }
+
 
 }

@@ -8,6 +8,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.*;
 
 import java.sql.Connection;
+import java.sql.Date;
 import java.time.LocalDate;
 
 public class HelloController {
@@ -38,10 +39,11 @@ public class HelloController {
 
     ObservableList<Estudiante> listaEstudiantes = FXCollections.observableArrayList();
 
+    Connection bd;
     //siempre el controlador tiene que initializarse
     @FXML
     public void initialize(){
-        Connection bd = Mantenimiento.conectar();
+        bd = Mantenimiento.conectar();
         niaTableview.setCellValueFactory(data -> new javafx.beans.property.SimpleIntegerProperty(data.getValue().getNia()).asObject());
         nombreTableview.setCellValueFactory(data -> new javafx.beans.property.SimpleStringProperty(data.getValue().getNombre()));
         fechaTableview.setCellValueFactory(data -> new ReadOnlyObjectWrapper<>(data.getValue().getDate()));
@@ -52,8 +54,19 @@ public class HelloController {
 
     @FXML
     protected void onAnyadirEstudiante() {
+        int nia = Integer.parseInt(niaTextField.getText());
+        String nombre = nombreTextField.getText();
+        LocalDate fecha = datePicker.getValue();
 
+        Estudiante estudiante = new Estudiante(nia, nombre, fecha);
 
+        Mantenimiento.insertar(bd, estudiante);
+
+        niaTextField.clear();
+        nombreTextField.clear();
+        datePicker.setValue(null);
+
+        tablaEstudiante.setItems(Mantenimiento.consultar(bd));
 
     }
 }
