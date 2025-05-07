@@ -101,7 +101,7 @@ public class Main {
 
     public static void borrar(Connection conexion){
 
-        String query = "DELETE FROM estudiantes WHERE nombre = 'Roberto'";
+        String query = "DELETE FROM estudiante WHERE nombre = 'Roberto'";
 
         Statement stmt;
 

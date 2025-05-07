@@ -50,6 +50,8 @@ public class HelloController {
     ObservableList<Estudiante> listaEstudiantes = FXCollections.observableArrayList();
 
     Connection bd;
+    int nia_anterior;
+
     //siempre el controlador tiene que initializarse
     @FXML
     public void initialize(){
@@ -84,12 +86,57 @@ public class HelloController {
         addButton.setDisable(true);
         guardarButton.setDisable(false);
 
-        Estudiante estudiante = tablaEstudiante.getSelectionModel().getSelectedItem();
+        //cogemos el estudiante que seleccionesmos con el ratón
+        Estudiante estudianteSeleccionado = tablaEstudiante.getSelectionModel().getSelectedItem();
+
+        nia_anterior = estudianteSeleccionado.getNia();
+        if(estudianteSeleccionado != null){
+
+            niaTextField.setText(String.valueOf(estudianteSeleccionado.getNia()));
+            nombreTextField.setText(estudianteSeleccionado.getNombre());
+            datePicker.setValue(estudianteSeleccionado.getDate());
+
+        }else {
+            System.out.println("No hay filas seleccionadas");
+        }
+
     }
 
     public void onBorrarButton(ActionEvent actionEvent) {
+
+        Estudiante estudianteSeleccionado = tablaEstudiante.getSelectionModel().getSelectedItem();
+
+        if (estudianteSeleccionado != null){
+
+            Mantenimiento.borrar(bd, estudianteSeleccionado);
+
+        }else{
+            System.out.println("No hay nada seleccionado");
+        }
+
+        tablaEstudiante.setItems(Mantenimiento.consultar(bd));
+
     }
 
     public void onGuardarButton(ActionEvent actionEvent) {
+
+        addButton.setDisable(false);
+        guardarButton.setDisable(true);
+
+        int nia = Integer.parseInt(niaTextField.getText());
+        String nombre = nombreTextField.getText();
+        LocalDate fecha = datePicker.getValue();
+
+        Estudiante estudiante = new Estudiante(nia, nombre, fecha);
+
+        Mantenimiento.modificar(bd, estudiante, nia_anterior);
+
+        niaTextField.clear();
+        nombreTextField.clear();
+        datePicker.setValue(null);
+
+        tablaEstudiante.setItems(Mantenimiento.consultar(bd));
+
+
     }
 }

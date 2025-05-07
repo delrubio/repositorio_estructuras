@@ -87,5 +87,38 @@ public class Mantenimiento {
         }
     }
 
+    public  static void modificar(Connection conexion, Estudiante estudiante, int nia_anterior){
+        String query = "UPDATE estudiante SET nia = '" + estudiante.getNia() + "', nombre = '" + estudiante.getNombre()
+        + "', fecha_nacimiento = '" + estudiante.getDate() + "' WHERE nia = '" + nia_anterior + "'";
+
+
+        Statement stmt;
+
+        try {
+            stmt = conexion.createStatement();
+            stmt.executeUpdate(query);
+            System.out.println("--- FILA ACTUALIZADA ---");
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+            throw new RuntimeException(e);
+        }
+    }
+
+    public static void borrar(Connection conexion, Estudiante estudiante){
+
+        String query = "DELETE FROM estudiante WHERE nia = '" + estudiante.getNia() + "'";
+
+        Statement stmt;
+
+        try {
+            stmt = conexion.createStatement();
+            stmt.executeUpdate(query);
+            System.out.println("--- FILA BORRADA ---");
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+            throw new RuntimeException(e);
+        }
+
+    }
 
 }
