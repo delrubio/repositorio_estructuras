@@ -29,25 +29,19 @@ public class Ejercicio9 {
 
             String linea;
             while ((linea = reader.readLine()) != null){
-                String[] palabras = linea.split("[,.;: ]");
-                System.out.println(palabras);
+                String[] palabras = linea.split("[ ]");
 
-                for (int i = 0; i < palabras.length; i++) {
-                    char[] caracteres = palabras[i].toCharArray();
-                    System.out.println(caracteres);
-                    
-                    for (int j = 0; j < caracteres.length; j++) {
-                        String letra;
-                        if (i == 0){
-                            letra = Character.toString(caracteres[i]);
-                            writer.write(letra.toUpperCase());
-                        }else{
-                            letra = Character.toString(caracteres[i]);
-                            writer.write(letra);
-                        }
+                for (String pal : palabras){
+                    char[] caracteres = pal.toCharArray();
+                    writer.write(Character.toString(caracteres[0]).toUpperCase());
+
+                    for (int i = 1; i < caracteres.length; i++) {
+                        writer.write(Character.toString(caracteres[i]));
                     }
+
                     writer.write(" ");
                 }
+                writer.close();
 
             }
 
