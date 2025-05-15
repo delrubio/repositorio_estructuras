@@ -20,6 +20,7 @@ public class Ejercicio8 {
         String carpeta = teclado.next();
 
         File comprobar_carpeta = new File(carpeta);
+
         if (comprobar_carpeta.exists()){
 
             for (int i = 1; i <= n; i++) {
