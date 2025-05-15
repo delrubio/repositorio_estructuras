@@ -1,0 +1,9 @@
+Patricia,2
+Izan,5
+Cesar,3
+David,9
+Mario,7
+Cesar,3
+Cesar,3
+Cesar,3
+Cesar,3
