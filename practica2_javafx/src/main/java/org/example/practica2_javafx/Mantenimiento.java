@@ -10,10 +10,10 @@ public class Mantenimiento {
 
     public static Connection conectar(){
         Connection conexion;
-        String host = "jdbc:mariadb://localhost:3307/";
+        String host = "jdbc:mariadb://localhost:3306/";
         String user = "root";
         String pass = "";
-        String bd = "instituto";
+        String bd = "ferias_de_arte";
 
         try {
             conexion = DriverManager.getConnection(host+bd, user, pass);
